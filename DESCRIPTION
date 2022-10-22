@@ -15,9 +15,10 @@ Imports:
     gmp,
     PolygonSoup,
     Rcpp (>= 1.0.9),
+    rgl,
     Rvcg
 Suggests: 
-    rgl
+    rmarchingcubes
 LinkingTo: 
     BH,
     Rcpp,
