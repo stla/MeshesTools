@@ -4,7 +4,7 @@
 \alias{cyclideMesh}
 \title{Cyclide mesh}
 \usage{
-cyclideMesh(a, c, mu, nu = 90L, nv = 40L, rgl = TRUE)
+cyclideMesh(a, c, mu, nu = 90L, nv = 40L)
 }
 \arguments{
 \item{a, c, mu}{cyclide parameters, positive numbers such that

@@ -4,7 +4,7 @@
 \alias{torusMesh}
 \title{Torus mesh}
 \usage{
-torusMesh(R, r, nu = 50, nv = 30, rgl = TRUE)
+torusMesh(R, r, nu = 50, nv = 30)
 }
 \arguments{
 \item{R, r}{major and minor radii, positive numbers}

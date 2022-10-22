@@ -17,11 +17,10 @@
 #' view3d(0, 0, zoom = 0.75)
 #' shade3d(mesh, color = "green")
 #' wire3d(mesh)
-torusMesh <- function(R, r, nu = 50, nv = 30, rgl = TRUE){
+torusMesh <- function(R, r, nu = 50, nv = 30){
   stopifnot(isPositiveNumber(R), isPositiveNumber(r))
   stopifnot(R > r)
   stopifnot(nu >= 3, nv >= 3)
-  stopifnot(isBoolean(rgl))
   nu <- as.integer(nu)
   nv <- as.integer(nv)
   nunv <- nu*nv
@@ -118,10 +117,9 @@ torusMesh <- function(R, r, nu = 50, nv = 30, rgl = TRUE){
 #' wire3d(mesh)
 #' shade3d(sphere, color = "red")
 #' wire3d(sphere)
-cyclideMesh <- function(a, c, mu, nu = 90L, nv = 40L, rgl = TRUE){
+cyclideMesh <- function(a, c, mu, nu = 90L, nv = 40L){
   stopifnot(c > 0, a > mu, mu > c)
   stopifnot(nu >= 3, nv >= 3)
-  stopifnot(isBoolean(rgl))
   nu <- as.integer(nu)
   nv <- as.integer(nv)
   vertices <- matrix(NA_real_, nrow = 3L, ncol = nu*nv)
@@ -228,7 +226,6 @@ HopfTorusMesh <- function(
   stopifnot(A < pi/2)
   stopifnot(is.null(alpha) || isPositiveNumber(alpha))
   stopifnot(nu >= 3, nv >= 3)
-  stopifnot(isBoolean(rgl))
   nu <- as.integer(nu)
   nv <- as.integer(nv)
   vs    <- matrix(NA_real_, nrow = 3L, ncol = nu*nv)
