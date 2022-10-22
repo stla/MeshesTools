@@ -3,3 +3,4 @@
 ^\.github$
 ^cran-comments\.md$
 ^inst/essais$
+^inst/screenshots$
