@@ -13,3 +13,7 @@ meshAreaEK <- function(rmesh, triangulate) {
     .Call(`_MeshesTools_meshAreaEK`, rmesh, triangulate)
 }
 
+meshCentroidEK <- function(rmesh, triangulate) {
+    .Call(`_MeshesTools_meshCentroidEK`, rmesh, triangulate)
+}
+

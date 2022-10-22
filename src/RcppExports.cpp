@@ -48,11 +48,24 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// meshCentroidEK
+Rcpp::NumericVector meshCentroidEK(const Rcpp::List rmesh, const bool triangulate);
+RcppExport SEXP _MeshesTools_meshCentroidEK(SEXP rmeshSEXP, SEXP triangulateSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List >::type rmesh(rmeshSEXP);
+    Rcpp::traits::input_parameter< const bool >::type triangulate(triangulateSEXP);
+    rcpp_result_gen = Rcpp::wrap(meshCentroidEK(rmesh, triangulate));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_MeshesTools_distanceEK", (DL_FUNC) &_MeshesTools_distanceEK, 3},
     {"_MeshesTools_meshVolumeEK", (DL_FUNC) &_MeshesTools_meshVolumeEK, 2},
     {"_MeshesTools_meshAreaEK", (DL_FUNC) &_MeshesTools_meshAreaEK, 2},
+    {"_MeshesTools_meshCentroidEK", (DL_FUNC) &_MeshesTools_meshCentroidEK, 2},
     {NULL, NULL, 0}
 };
 
