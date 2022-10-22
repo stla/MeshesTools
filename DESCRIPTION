@@ -14,7 +14,8 @@ Imports:
     data.table,
     gmp,
     PolygonSoup,
-    Rcpp (>= 1.0.9)
+    Rcpp (>= 1.0.9),
+    Rvcg
 Suggests: 
     rgl
 LinkingTo: 
@@ -25,3 +26,4 @@ LinkingTo:
 Encoding: UTF-8
 LazyData: true
 SystemRequirements: C++ 17, gmp, mpfr
+RoxygenNote: 7.2.1

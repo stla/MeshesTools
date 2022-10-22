@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' R <- 4; r <- 2
 #' mesh <- torusMesh(R, r)
 #' meshVolume(mesh)
@@ -18,7 +18,7 @@
 #' 2 * pi^2 * R * r^2
 meshVolume <- function(mesh){
   vft <- getVFT(mesh)
-  meshVolumeK(vft[["rmesh"]], !vft[["isTriangle"]])
+  meshVolumeEK(vft[["rmesh"]], !vft[["isTriangle"]])
 }
 
 #' @title Mesh area
@@ -33,7 +33,7 @@ meshVolume <- function(mesh){
 #' @export
 #'
 #' @examples
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' R <- 4; r <- 2
 #' mesh <- torusMesh(R, r)
 #' meshArea(mesh)
@@ -41,5 +41,5 @@ meshVolume <- function(mesh){
 #' 4 * pi^2 * R * r
 meshArea <- function(mesh){
   vft <- getVFT(mesh)
-  meshAreaK(vft[["rmesh"]], !vft[["isTriangle"]])
+  meshAreaEK(vft[["rmesh"]], !vft[["isTriangle"]])
 }

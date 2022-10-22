@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' # cube example ####
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' mesh <- rgl::cube3d()
 #' points <- rbind(
 #'   c(0, 0, 0),
@@ -23,7 +23,7 @@
 #' distancesToMesh(mesh, points) # should be 1 and 0
 #'
 #' # cyclide example ####
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' a <- 100; c <- 30; mu <- 80
 #' mesh <- cyclideMesh(a, c, mu, nu = 100L, nv = 100L)
 #' O2 <- c(c, 0, 0)
@@ -57,5 +57,5 @@ distancesToMesh <- function(mesh, points){
   isTriangle       <- checkedMesh[["isTriangle"]]
   triangulate <- !isTriangle
   rmesh <- list("vertices" = vertices, "faces" = faces)
-  distanceK(rmesh, tpoints, triangulate)
+  distanceEK(rmesh, tpoints, triangulate)
 }
