@@ -2,6 +2,7 @@
 
 export(HopfTorusMesh)
 export(clipMesh)
+export(convexParts)
 export(cyclideMesh)
 export(distancesToMesh)
 export(meshArea)

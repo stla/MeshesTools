@@ -25,6 +25,10 @@
 #include <CGAL/Gmpq.h>
 #include <CGAL/Gmpz.h>
 #include "gmp.h"
+#include <CGAL/Nef_3/SNC_indexed_items.h>
+#include <CGAL/convex_decomposition_3.h>
+#include <CGAL/Polyhedron_3.h>
+#include <CGAL/boost/graph/copy_face_graph.h>
 
 // -------------------------------------------------------------------------- //
 //typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
@@ -37,6 +41,8 @@ typedef CGAL::Cartesian<CGAL::Gmpq> QK;
 typedef CGAL::Surface_mesh<QK::Point_3> QMesh3;
 typedef QK::Point_3 QPoint3;
 typedef QK::Vector_3 QVector3;
+typedef CGAL::Nef_polyhedron_3<EK, CGAL::SNC_indexed_items> NefPol;
+typedef CGAL::Polyhedron_3<EK> EPolyhedron;
 
 // -------------------------------------------------------------------------- //
 namespace PMP = CGAL::Polygon_mesh_processing;
