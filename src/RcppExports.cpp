@@ -11,6 +11,22 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// clipMeshEK
+Rcpp::List clipMeshEK(const Rcpp::List rmesh, const Rcpp::List rclipper, const bool clipVolume, const bool triangulate1, const bool triangulate2, const bool normals);
+RcppExport SEXP _MeshesTools_clipMeshEK(SEXP rmeshSEXP, SEXP rclipperSEXP, SEXP clipVolumeSEXP, SEXP triangulate1SEXP, SEXP triangulate2SEXP, SEXP normalsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List >::type rmesh(rmeshSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::List >::type rclipper(rclipperSEXP);
+    Rcpp::traits::input_parameter< const bool >::type clipVolume(clipVolumeSEXP);
+    Rcpp::traits::input_parameter< const bool >::type triangulate1(triangulate1SEXP);
+    Rcpp::traits::input_parameter< const bool >::type triangulate2(triangulate2SEXP);
+    Rcpp::traits::input_parameter< const bool >::type normals(normalsSEXP);
+    rcpp_result_gen = Rcpp::wrap(clipMeshEK(rmesh, rclipper, clipVolume, triangulate1, triangulate2, normals));
+    return rcpp_result_gen;
+END_RCPP
+}
 // distanceEK
 Rcpp::NumericVector distanceEK(const Rcpp::List rmesh, const Rcpp::NumericMatrix points, const bool triangulate);
 RcppExport SEXP _MeshesTools_distanceEK(SEXP rmeshSEXP, SEXP pointsSEXP, SEXP triangulateSEXP) {
@@ -62,6 +78,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_MeshesTools_clipMeshEK", (DL_FUNC) &_MeshesTools_clipMeshEK, 6},
     {"_MeshesTools_distanceEK", (DL_FUNC) &_MeshesTools_distanceEK, 3},
     {"_MeshesTools_meshVolumeEK", (DL_FUNC) &_MeshesTools_meshVolumeEK, 2},
     {"_MeshesTools_meshAreaEK", (DL_FUNC) &_MeshesTools_meshAreaEK, 2},
