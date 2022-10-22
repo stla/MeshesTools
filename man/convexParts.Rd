@@ -4,20 +4,11 @@
 \alias{convexParts}
 \title{Decomposition into convex parts}
 \usage{
-convexParts(vertices, faces, mesh = NULL, triangulate = TRUE)
+convexParts(mesh = NULL, triangulate = TRUE)
 }
 \arguments{
-\item{vertices}{a numeric matrix with three columns, or a \code{bigq}
-matrix with three columns if \code{numbersType="gmp"}}
-
-\item{faces}{either an integer matrix (each row provides the vertex indices
-of the corresponding face) or a list of integer vectors, each one
-providing the vertex indices of the corresponding face}
-
-\item{mesh}{if not \code{NULL}, this argument takes precedence over
-\code{vertices} and \code{faces}, and must be either a list containing
-the fields \code{vertices} and \code{faces} (objects as described above),
-otherwise a \strong{rgl} mesh (i.e. a \code{mesh3d} object)}
+\item{mesh}{either a list containing the fields \code{vertices} and 
+\code{faces}, otherwise a \strong{rgl} mesh (i.e. a \code{mesh3d} object)}
 
 \item{triangulate}{Boolean, whether to triangulate the convex parts}
 }

@@ -3,9 +3,12 @@
 #endif
 
 // [[Rcpp::export]]
-Rcpp::List convexDecomposition(Rcpp::List rmesh, const bool triangulate){
+Rcpp::List convexDecomposition(
+  Rcpp::List rmesh, const bool triangulate_in, const bool triangulate_out
+){
   Message("\u2014 Processing mesh...");
-  EMesh3 mesh = makeSurfMesh<EMesh3, EPoint3>(rmesh, true, true, true);
+  EMesh3 mesh = 
+    makeSurfMesh<EMesh3, EPoint3>(rmesh, true, triangulate_in, true);
   Message("... done.\n");
   NefPol nef(mesh);
   CGAL::convex_decomposition_3(nef);
@@ -32,8 +35,8 @@ Rcpp::List convexDecomposition(Rcpp::List rmesh, const bool triangulate){
   Message(msg);
   Rcpp::List out(ncp);
   size_t i = 0;
-  for(EMesh3 cmesh : convex_parts){
-    if(triangulate && !CGAL::is_triangle_mesh(cmesh)){
+  for(EMesh3 cmesh : convex_parts) {
+    if(triangulate_out && !CGAL::is_triangle_mesh(cmesh)) {
       Message(
         "Triangulation of convex part n\u00b0" + std::to_string(i+1) + "."
       );

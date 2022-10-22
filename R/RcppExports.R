@@ -5,8 +5,8 @@ clipMeshEK <- function(rmesh, rclipper, clipVolume, triangulate1, triangulate2, 
     .Call(`_MeshesTools_clipMeshEK`, rmesh, rclipper, clipVolume, triangulate1, triangulate2, normals)
 }
 
-convexDecomposition <- function(rmesh, triangulate) {
-    .Call(`_MeshesTools_convexDecomposition`, rmesh, triangulate)
+convexDecomposition <- function(rmesh, triangulate_in, triangulate_out) {
+    .Call(`_MeshesTools_convexDecomposition`, rmesh, triangulate_in, triangulate_out)
 }
 
 distanceEK <- function(rmesh, points, triangulate) {

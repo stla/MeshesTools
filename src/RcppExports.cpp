@@ -28,14 +28,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // convexDecomposition
-Rcpp::List convexDecomposition(Rcpp::List rmesh, const bool triangulate);
-RcppExport SEXP _MeshesTools_convexDecomposition(SEXP rmeshSEXP, SEXP triangulateSEXP) {
+Rcpp::List convexDecomposition(Rcpp::List rmesh, const bool triangulate_in, const bool triangulate_out);
+RcppExport SEXP _MeshesTools_convexDecomposition(SEXP rmeshSEXP, SEXP triangulate_inSEXP, SEXP triangulate_outSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::List >::type rmesh(rmeshSEXP);
-    Rcpp::traits::input_parameter< const bool >::type triangulate(triangulateSEXP);
-    rcpp_result_gen = Rcpp::wrap(convexDecomposition(rmesh, triangulate));
+    Rcpp::traits::input_parameter< const bool >::type triangulate_in(triangulate_inSEXP);
+    Rcpp::traits::input_parameter< const bool >::type triangulate_out(triangulate_outSEXP);
+    rcpp_result_gen = Rcpp::wrap(convexDecomposition(rmesh, triangulate_in, triangulate_out));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -91,7 +92,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_MeshesTools_clipMeshEK", (DL_FUNC) &_MeshesTools_clipMeshEK, 6},
-    {"_MeshesTools_convexDecomposition", (DL_FUNC) &_MeshesTools_convexDecomposition, 2},
+    {"_MeshesTools_convexDecomposition", (DL_FUNC) &_MeshesTools_convexDecomposition, 3},
     {"_MeshesTools_distanceEK", (DL_FUNC) &_MeshesTools_distanceEK, 3},
     {"_MeshesTools_meshVolumeEK", (DL_FUNC) &_MeshesTools_meshVolumeEK, 2},
     {"_MeshesTools_meshAreaEK", (DL_FUNC) &_MeshesTools_meshAreaEK, 2},
