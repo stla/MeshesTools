@@ -9,3 +9,18 @@ Tools for 3D meshes.
 ### Clipping
 
 ![](https://raw.githubusercontent.com/stla/MeshesTools/main/inst/screenshots/Togliatti.gif)
+
+### Decomposition in convex parts
+
+![](https://raw.githubusercontent.com/stla/MeshesOperations/master/inst/screenshots/pentagrammicPrism.png)
+
+### Other tools
+
+Volume, area, centroid.
+
+
+## License
+
+This package is provided under the GPL-3 license but it uses the C++ library 
+CGAL. If you wish to use CGAL for commercial purposes, you must obtain a 
+license from the [GeometryFactory](https://geometryfactory.com).
