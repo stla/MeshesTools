@@ -3,17 +3,14 @@
 #'
 #' @param R,r major and minor radii, positive numbers
 #' @param nu,nv numbers of subdivisions, integers (at least 3)
-#' @param rgl Boolean, whether to return a \strong{rgl} mesh
 #'
-#' @return A triangle \strong{rgl} mesh (class \code{mesh3d}) if
-#'   \code{rgl=TRUE}, otherwise a \code{cgalMesh} list (vertices, faces,
-#'   and normals).
+#' @return A triangle \strong{rgl} mesh (class \code{mesh3d}).
 #' @export
 #'
 #' @importFrom rgl tmesh3d
 #'
 #' @examples
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' library(rgl)
 #' mesh <- torusMesh(R = 3, r = 1)
 #' open3d(windowRect = c(50, 50, 562, 562))
@@ -81,19 +78,12 @@ torusMesh <- function(R, r, nu = 50, nv = 30, rgl = TRUE){
   k_ <- k1 + j_
   tris1[, k_] <- rbind(j_, l_, k_)
   tris2[, k_] <- rbind(j_, jp1_, l_)
-  tmesh <- tmesh3d(
+  tmesh3d(
     vertices = vs,
     indices = cbind(tris1, tris2),
     normals = normals,
     homogeneous = FALSE
   )
-  if(rgl){
-    tmesh
-  }else{
-    out <- Mesh(mesh = tmesh)
-    out[["normals"]] <- normals
-    out
-  }
 }
 
 #' @title Cyclide mesh
@@ -102,11 +92,8 @@ torusMesh <- function(R, r, nu = 50, nv = 30, rgl = TRUE){
 #' @param a,c,mu cyclide parameters, positive numbers such that
 #'   \code{c < mu < a}
 #' @param nu,nv numbers of subdivisions, integers (at least 3)
-#' @param rgl Boolean, whether to return a \strong{rgl} mesh
 #'
-#' @return A triangle \strong{rgl} mesh (class \code{mesh3d}) if
-#'   \code{rgl=TRUE}, otherwise a \code{cgalMesh} list (vertices, faces,
-#'   and normals).
+#' @return A triangle \strong{rgl} mesh (class \code{mesh3d}).
 #'
 #' @details The Dupin cyclide in the plane \emph{z=0}:
 #' \if{html}{
@@ -121,7 +108,7 @@ torusMesh <- function(R, r, nu = 50, nv = 30, rgl = TRUE){
 #' @importFrom rgl tmesh3d
 #'
 #' @examples
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' library(rgl)
 #' mesh <- cyclideMesh(a = 97, c = 32, mu = 57)
 #' sphere <- sphereMesh(x = 32, y = 0, z = 0, r = 40)
@@ -161,7 +148,7 @@ cyclideMesh <- function(a, c, mu, nu = 90L, nv = 40L, rgl = TRUE){
   #   ((a - c) * (mu + omega) - b2) /
   #   ((a + c) * (omega - c) + b2)
   OmegaT <- c(omegaT, 0, 0)
-  tormesh <- torusMesh(R, r, nu, nv, rgl = TRUE)
+  tormesh <- torusMesh(R, r, nu, nv)
   rtnormals <- r * tormesh[["normals"]][1L:3L, ]
   xvertices <- tormesh[["vb"]][1L:3L, ] + OmegaT
   for(i in 1L:nu){
@@ -176,19 +163,12 @@ cyclideMesh <- function(a, c, mu, nu = 90L, nv = 40L, rgl = TRUE){
       normals[k, ] <- foo / sqrt(c(crossprod(foo)))
     }
   }
-  tmesh <- tmesh3d(
+  tmesh3d(
     vertices    = vertices,
     indices     = tormesh[["it"]],
     normals     = normals,
     homogeneous = FALSE
   )
-  if(rgl){
-    tmesh
-  }else{
-    out <- Mesh(mesh = tmesh)
-    out[["normals"]] <- normals
-    out
-  }
 }
 
 HopfTorusMeshHelper <- function(u, cos_v, sin_v, nlobes, A, alpha){
@@ -220,18 +200,15 @@ HopfTorusMeshHelper <- function(u, cos_v, sin_v, nlobes, A, alpha){
 #'   stereographic projection, a positive number; otherwise the ordinary
 #'   stereographic projection is used
 #' @param nu,nv numbers of subdivisions, integers (at least 3)
-#' @param rgl Boolean, whether to return a \strong{rgl} mesh
 #'
-#' @return A triangle \strong{rgl} mesh (class \code{mesh3d}) if
-#'   \code{rgl=TRUE}, otherwise a \code{cgalMesh} list (vertices, faces,
-#'   and normals).
+#' @return A triangle \strong{rgl} mesh (class \code{mesh3d}).
 #' @export
 #'
 #' @importFrom rgl tmesh3d
 #' @importFrom Rvcg vcgUpdateNormals
 #'
 #' @examples
-#' library(MeshesOperations)
+#' library(MeshesTools)
 #' library(rgl)
 #' mesh <- HopfTorusMesh(nu = 90, nv = 90)
 #' open3d(windowRect = c(50, 50, 562, 562))
@@ -244,7 +221,7 @@ HopfTorusMeshHelper <- function(u, cos_v, sin_v, nlobes, A, alpha){
 #' shade3d(mesh, color = "yellowgreen")
 #' wire3d(mesh)
 HopfTorusMesh <- function(
-  nlobes = 3, A = 0.44, alpha = NULL, nu, nv, rgl = TRUE
+  nlobes = 3, A = 0.44, alpha = NULL, nu, nv
 ){
   stopifnot(isStrictPositiveInteger(nlobes))
   stopifnot(isPositiveNumber(A))
@@ -282,19 +259,12 @@ HopfTorusMesh <- function(
   l_ <- k1 + jp1_
   tris1[, k_] <- rbind(k_, l_, j_)
   tris2[, k_] <- rbind(l_, jp1_, j_)
-  rglmesh <- vcgUpdateNormals(tmesh3d(
+  vcgUpdateNormals(tmesh3d(
     vertices    = vs,
     indices     = cbind(tris1, tris2),
     normals     = NULL,
     homogeneous = FALSE
   ), silent = TRUE)
-  if(rgl){
-    rglmesh
-  }else{
-    out <- Mesh(mesh = rglmesh)
-    out[["normals"]] <- t(rglmesh[["normals"]][1L:3L, ])
-    out
-  }
 }
 
 #' @title Sphere mesh

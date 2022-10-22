@@ -10,13 +10,9 @@ torusMesh(R, r, nu = 50, nv = 30, rgl = TRUE)
 \item{R, r}{major and minor radii, positive numbers}
 
 \item{nu, nv}{numbers of subdivisions, integers (at least 3)}
-
-\item{rgl}{Boolean, whether to return a \strong{rgl} mesh}
 }
 \value{
-A triangle \strong{rgl} mesh (class \code{mesh3d}) if
-  \code{rgl=TRUE}, otherwise a \code{cgalMesh} list (vertices, faces,
-  and normals).
+A triangle \strong{rgl} mesh (class \code{mesh3d}).
 }
 \description{
 Triangle mesh of a torus.
