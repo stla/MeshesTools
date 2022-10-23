@@ -7,6 +7,9 @@ double meshVolumeEK(const Rcpp::List rmesh, const bool triangulate) {
   Message("\u2014 Processing mesh...");
   EMesh3 mesh = makeSurfMesh<EMesh3, EPoint3>(rmesh, true, triangulate, true);
   Message("... done.\n");
+  if(PMP::does_self_intersect(mesh)) {
+    Rcpp::stop("The mesh self-intersects.");
+  }
   const EK::FT vol = PMP::volume(mesh);
   return CGAL::to_double<EK::FT>(vol);
 }
@@ -16,6 +19,9 @@ double meshAreaEK(const Rcpp::List rmesh, const bool triangulate) {
   Message("\u2014 Processing mesh...");
   EMesh3 mesh = makeSurfMesh<EMesh3, EPoint3>(rmesh, true, triangulate, false);
   Message("... done.\n");
+  if(PMP::does_self_intersect(mesh)) {
+    Rcpp::stop("The mesh self-intersects.");
+  }
   const EK::FT ar = PMP::area(mesh);
   return CGAL::to_double<EK::FT>(ar);
 }

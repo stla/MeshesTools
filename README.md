@@ -18,7 +18,7 @@ Tools for 3D meshes.
 
 ### Other tools
 
-Volume, area, centroid.
+Volume, area, centroid, distance between a point and a mesh.
 
 
 ## License
