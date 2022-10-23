@@ -14,6 +14,8 @@ Tools for 3D meshes.
 
 ![](https://raw.githubusercontent.com/stla/MeshesOperations/master/inst/screenshots/pentagrammicPrism.png)
 
+![](https://raw.githubusercontent.com/stla/MeshesOperations/master/inst/screenshots/greatStellatedDodecahedron.gif)
+
 ### Other tools
 
 Volume, area, centroid.
