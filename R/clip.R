@@ -13,7 +13,8 @@
 #' @param normals Boolean, whether to compute the vertex normals of the
 #'   output mesh
 #'
-#' @return A triangle mesh of class \code{cgalMesh}.
+#' @return A triangle mesh of class \code{cgalMesh} (see 
+#'   \code{\link[PolygonSoup:Mesh]{Mesh}} for details).
 #'
 #' @export
 #'

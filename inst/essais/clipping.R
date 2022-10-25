@@ -1,0 +1,8 @@
+library(MeshesTools)
+library(rgl)
+mesh    <- cube3d()
+clipper <- sphereMesh(r= sqrt(2))
+clippedMesh <- clipMesh(clipper, mesh, clipVolume = TRUE)
+open3d(windowRect = c(50, 50, 562, 562))
+view3d(zoom = 0.9)
+shade3d(toRGL(clippedMesh), color = "purple")

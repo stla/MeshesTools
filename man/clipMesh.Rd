@@ -23,7 +23,8 @@ kept closed if it is closed)}
 output mesh}
 }
 \value{
-A triangle mesh of class \code{cgalMesh}.
+A triangle mesh of class \code{cgalMesh} (see 
+  \code{\link[PolygonSoup:Mesh]{Mesh}} for details).
 }
 \description{
 Clip a mesh to the volume bounded by another mesh.
