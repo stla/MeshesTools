@@ -1,15 +1,20 @@
-Package: MeshesTools
 Type: Package
+Package: MeshesTools
 Title: Some Tools for 3D Meshes
 Version: 0.1.0.9000
 Authors@R: 
     person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre"))
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Provides some utilities for 3D meshes: clipping of a mesh to
+    the volume bounded by another mesh, decomposition in convex parts,
+    distance between a mesh and a point, volume, area, and centroid. All
+    algorithms are performed by the 'C++' library 'CGAL'
+    (<https://www.cgal.org/>).
 License: GPL-3
 URL: https://github.com/stla/MeshesTools
 BugReports: https://github.com/stla/MeshesTools/issues
+Depends: 
+    R (>= 2.10)
 Imports: 
     data.table,
     gmp,
@@ -27,7 +32,5 @@ LinkingTo:
     RcppEigen
 Encoding: UTF-8
 LazyData: true
-SystemRequirements: C++ 17, gmp, mpfr
 RoxygenNote: 7.2.1
-Depends: 
-    R (>= 2.10)
+SystemRequirements: C++ 17, gmp, mpfr
