@@ -17,8 +17,18 @@
 #' # true volume of the torus: 
 #' 2 * pi^2 * R * r^2
 meshVolume <- function(mesh){
-  vft <- getVFT(mesh)
-  meshVolumeEK(vft[["rmesh"]], !vft[["isTriangle"]])
+  if(inherits(mesh, "mesh3d")) {
+    vft  <- getVFT(mesh, beforeCheck = TRUE)
+    mesh <- vft[["rmesh"]]
+  }
+  vertices <- mesh[["vertices"]]
+  faces    <- mesh[["faces"]]
+  checkedMesh <- checkMesh(vertices, faces, gmp = FALSE, aslist = TRUE)
+  vertices         <- checkedMesh[["vertices"]]
+  faces            <- checkedMesh[["faces"]]
+  isTriangle <- checkedMesh[["isTriangle"]]
+  rmesh <- list("vertices" = vertices, "faces" = faces)
+  meshVolumeEK(rmesh, !isTriangle)
 }
 
 #' @title Mesh area
@@ -40,8 +50,18 @@ meshVolume <- function(mesh){
 #' # true area of the torus: 
 #' 4 * pi^2 * R * r
 meshArea <- function(mesh){
-  vft <- getVFT(mesh)
-  meshAreaEK(vft[["rmesh"]], !vft[["isTriangle"]])
+  if(inherits(mesh, "mesh3d")) {
+    vft  <- getVFT(mesh, beforeCheck = TRUE)
+    mesh <- vft[["rmesh"]]
+  }
+  vertices <- mesh[["vertices"]]
+  faces    <- mesh[["faces"]]
+  checkedMesh <- checkMesh(vertices, faces, gmp = FALSE, aslist = TRUE)
+  vertices         <- checkedMesh[["vertices"]]
+  faces            <- checkedMesh[["faces"]]
+  isTriangle <- checkedMesh[["isTriangle"]]
+  rmesh <- list("vertices" = vertices, "faces" = faces)
+  meshAreaEK(rmesh, !isTriangle)
 }
 
 #' @title Mesh centroid
@@ -60,6 +80,16 @@ meshArea <- function(mesh){
 #' mesh <- cyclideMesh(a = 97, c = 32, mu = 57)
 #' meshCentroid(mesh)
 meshCentroid <- function(mesh){
-  vft <- getVFT(mesh)
-  meshCentroidEK(vft[["rmesh"]], !vft[["isTriangle"]])
+  if(inherits(mesh, "mesh3d")) {
+    vft  <- getVFT(mesh, beforeCheck = TRUE)
+    mesh <- vft[["rmesh"]]
+  }
+  vertices <- mesh[["vertices"]]
+  faces    <- mesh[["faces"]]
+  checkedMesh <- checkMesh(vertices, faces, gmp = FALSE, aslist = TRUE)
+  vertices         <- checkedMesh[["vertices"]]
+  faces            <- checkedMesh[["faces"]]
+  isTriangle <- checkedMesh[["isTriangle"]]
+  rmesh <- list("vertices" = vertices, "faces" = faces)
+  meshCentroidEK(rmesh, !isTriangle)
 }
