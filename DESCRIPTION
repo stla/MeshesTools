@@ -1,12 +1,12 @@
 Type: Package
 Package: MeshesTools
 Title: Some Tools for 3D Meshes
-Version: 0.1.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre"))
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Provides some utilities for 3D meshes: clipping of a mesh to
-    the volume bounded by another mesh, decomposition in convex parts,
+    the volume bounded by another mesh, decomposition into convex parts,
     distance between a mesh and a point, volume, area, and centroid. All
     algorithms are performed by the 'C++' library 'CGAL'
     (<https://www.cgal.org/>).
