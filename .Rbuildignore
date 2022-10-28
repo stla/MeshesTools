@@ -5,3 +5,4 @@
 ^inst/essais$
 ^inst/screenshots$
 ^data-raw$
+^CRAN-SUBMISSION$
