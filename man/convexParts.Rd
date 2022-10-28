@@ -4,7 +4,7 @@
 \alias{convexParts}
 \title{Decomposition into convex parts}
 \usage{
-convexParts(mesh = NULL, triangulate = TRUE)
+convexParts(mesh, triangulate = TRUE)
 }
 \arguments{
 \item{mesh}{either a list containing the fields \code{vertices} and 
@@ -13,7 +13,8 @@ convexParts(mesh = NULL, triangulate = TRUE)
 \item{triangulate}{Boolean, whether to triangulate the convex parts}
 }
 \value{
-A list of \code{cgalMesh} lists, each corresponding to a convex part.
+A list of \code{cgalMesh} lists (see 
+  \code{\link[PolygonSoup:Mesh]{Mesh}}), each corresponding to a convex part.
 }
 \description{
 Decomposition of a mesh into convex parts.

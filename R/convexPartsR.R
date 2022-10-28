@@ -5,7 +5,8 @@
 #'   \code{faces}, otherwise a \strong{rgl} mesh (i.e. a \code{mesh3d} object)
 #' @param triangulate Boolean, whether to triangulate the convex parts
 #'
-#' @return A list of \code{cgalMesh} lists, each corresponding to a convex part.
+#' @return A list of \code{cgalMesh} lists (see 
+#'   \code{\link[PolygonSoup:Mesh]{Mesh}}), each corresponding to a convex part.
 #' @export
 #'
 #' @importFrom data.table uniqueN
@@ -35,7 +36,7 @@
 #' for(i in seq_len(ncp)){
 #'   shade3d(toRGL(meshes[[i]]), color = colors[i])
 #' }
-convexParts <- function(mesh = NULL, triangulate = TRUE) {
+convexParts <- function(mesh, triangulate = TRUE) {
   if(inherits(mesh, "mesh3d")) {
     vft  <- getVFT(mesh, beforeCheck = TRUE)
     mesh <- vft[["rmesh"]]
