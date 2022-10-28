@@ -19,7 +19,7 @@ The centroid of the mesh given as a numeric vector.
 Computes the centroid of a closed mesh.
 }
 \examples{
-library(MeshesTools)
+\donttest{library(MeshesTools)
 mesh <- cyclideMesh(a = 97, c = 32, mu = 57)
-meshCentroid(mesh)
+meshCentroid(mesh)}
 }

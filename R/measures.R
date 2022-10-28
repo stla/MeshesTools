@@ -76,9 +76,9 @@ meshArea <- function(mesh){
 #' @export
 #'
 #' @examples
-#' library(MeshesTools)
+#' \donttest{library(MeshesTools)
 #' mesh <- cyclideMesh(a = 97, c = 32, mu = 57)
-#' meshCentroid(mesh)
+#' meshCentroid(mesh)}
 meshCentroid <- function(mesh){
   if(inherits(mesh, "mesh3d")) {
     vft  <- getVFT(mesh, beforeCheck = TRUE)
